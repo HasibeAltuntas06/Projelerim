@@ -7,23 +7,29 @@ import java.awt.event.ActionListener;
 
 public class AsistanGUI extends JFrame {
 
-    private Asistan asistan; 
+    private Asistan asistan; // Asistan objesini burada tutuyoruz
+
+    // Parametreli kurucu
     public AsistanGUI(Asistan asistan) {
         this.asistan = asistan;
 
+        // Ana pencere ayarları
         setTitle("Sınav Bilgi Sistemi");
         setSize(400, 200);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLayout(null);
 
+        // Hoşgeldiniz mesajı (dinamik olarak Asistan ismi ekleniyor)
         JLabel lblHosgeldiniz = new JLabel("Hoşgeldiniz, Sayın " + asistan.getName());
         lblHosgeldiniz.setBounds(20, 20, 300, 30);
         add(lblHosgeldiniz);
 
+        // Ders Ekle butonu
         JButton btnDersEkle = new JButton("DERS EKLE");
         btnDersEkle.setBounds(20, 60, 150, 30);
         add(btnDersEkle);
 
+        // DersEklemeGUI bağlantısı
         btnDersEkle.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -32,10 +38,12 @@ public class AsistanGUI extends JFrame {
             }
         });
 
+        // Sınav Ekle butonu
         JButton btnSinavEkle = new JButton("SINAV EKLE");
         btnSinavEkle.setBounds(200, 60, 150, 30);
         add(btnSinavEkle);
 
+        // SinavEklemeGUI bağlantısı
         btnSinavEkle.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -44,9 +52,11 @@ public class AsistanGUI extends JFrame {
             }
         });
 
+        // Pencereyi görünür hale getir
         setVisible(true);
     }
 
+    // Main metodu: Test için örnek bir Asistan oluşturuluyor
     public static void main(String[] args) {
         Asistan sahteAsistan = new Asistan();
         sahteAsistan.setName("Örnek Kullanıcı");
@@ -54,11 +64,12 @@ public class AsistanGUI extends JFrame {
         sahteAsistan.setTcno("12345678901");
         sahteAsistan.setPassword("password");
 
+        // AsistanGUI'yi örnek Asistan objesiyle başlatıyoruz
         new AsistanGUI(sahteAsistan);
     }
 }
 
-
+// DersEklemeGUI
 class DersEklemeGUI extends JFrame {
     public DersEklemeGUI() {
         setTitle("Ders Ekleme");
@@ -66,9 +77,11 @@ class DersEklemeGUI extends JFrame {
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setLayout(null);
 
+        // Burada ders ekleme ile ilgili UI öğeleri eklenebilir
     }
 }
 
+// SinavEklemeGUI
 class SinavEklemeGUI extends JFrame {
     public SinavEklemeGUI() {
         setTitle("Sınav Ekleme");
@@ -76,5 +89,6 @@ class SinavEklemeGUI extends JFrame {
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setLayout(null);
 
+        // Burada sınav ekleme ile ilgili UI öğeleri eklenebilir
     }
 }

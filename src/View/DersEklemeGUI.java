@@ -176,6 +176,7 @@ public class DersEklemeGUI extends JFrame {
     }
 
     private void addCourseToDatabase(String department_id, String class_level_id, String name) {
+    	
         try {
             String insertQuery = "INSERT INTO dersler (name, department_id, class_level_id) VALUES (?, ?, ?)";
             PreparedStatement preparedStatement = connection.prepareStatement(insertQuery);
@@ -184,11 +185,12 @@ public class DersEklemeGUI extends JFrame {
             preparedStatement.setString(3, class_level_id);
 
             int result = preparedStatement.executeUpdate();
+          
 
             if (result > 0) {
                 JOptionPane.showMessageDialog(null, "Ders başarıyla eklendi!");
-                courseNameTextField.setText(""); // Ders adı inputunu temizle
-                loadCourses(); // Tabloyu güncelle
+                courseNameTextField.setText(""); 
+                loadCourses(); 
             } else {
                 JOptionPane.showMessageDialog(null, "Ders eklenirken bir hata oluştu.");
             }
